@@ -14,7 +14,8 @@
   <button class="tablinks" onclick="openTab(event, 'Setup')">Set Up</button>
 </div>
 <div id="Timer" class="content activeContent">
-	<h1 id="blind">Press Spacebar to Start</h1>
+	<h1 id="instr">Press Spacebar to Start</h1>
+	<h2 id="blind"></h2>
 	<h1 id="demo">--:--</h1>
 </div>
 
@@ -29,17 +30,18 @@
 		<h1>Set up Blinds</h1>
 		<ol>
 	 	  	<li class="level">				
-				<input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind">
-				<input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind">
+				<input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind" value="25">
+				<input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind" value="50">
 				<input min="0" max="100000" name="ante" type="number" placeholder="Ante">
-				<input min="0" max="60" name="duration" type="number" placeholder="Minutes">
+				<input min="0" max="60" name="duration" type="number" placeholder="Minutes" value="20">
 			</li>
-			<ul class="break">Break</ul>
+			<li class="break">Break</li>
 			<li class="level">				
-				<input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind">
-				<input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind">
+				<input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind" value="50">
+				<input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind" value="100">
 				<input min="0" max="100000" name="ante" type="number" placeholder="Ante">
-				<input min="0" max="60" name="duration" type="number" placeholder="Minutes">
+				<input min="0" max="60" name="duration" type="number" placeholder="Minutes"
+					   value="20">
 			</li>
 		</ol>
 	</div>

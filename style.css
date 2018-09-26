@@ -84,14 +84,17 @@ ol{
 	list-style-type:none;
 	margin-left: 0;
 }
-ol > li{
+ol > li.level{
 	counter-increment: customlistcounter;
 }
-ol > li:before{
+ol > li.level:before{
 	content: counter(customlistcounter)" ";
 	font-weight: bold;
 	float:left;
 	width:3em;
+}
+li.break{
+	list-style-type: none;
 }
 ol:first-child{
 	counter-reset: customlistcounter;
