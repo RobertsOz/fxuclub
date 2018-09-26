@@ -80,3 +80,8 @@
 .activeSubContent {
 	display: block;
 }
+
+ul {
+	display: inline-block;
+}
+
