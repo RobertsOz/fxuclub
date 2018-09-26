@@ -6,10 +6,12 @@ var play = 0;
 document.body.onkeyup = function(e){
 	"use strict";
     if(e.keyCode === 32 && Boolean(play)===false){
+		document.getElementById("blind").innerHTML = "Start";
         play = 1;
     }
 	else if(e.keyCode === 32 && Boolean(play)===true){
 		play = 0;
+		document.getElementById("blind").innerHTML = "Stop";
 	}
 };
 var currentBlindTime = 15;
