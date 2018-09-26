@@ -9,8 +9,18 @@
 </head>
 
 <body>
-<h1 id="blind"> </h1>
-<p id="demo"></p>
+<div class="tab">
+  <button class="tablinks active" onclick="openTab(event, 'Timer')">Clock</button>
+  <button class="tablinks" onclick="openTab(event, 'Setup')">Set Up</button>
+</div>
+<div id="Timer" class="content activeContent">
+	<h1 id="blind">Press Spacebar to Start</h1>
+	<h1 id="demo">--:--</h1>
+</div>
+<div id="Setup" class="content">
+	<h1>Set up Blinds</h1>
+</div>
+	
 </body>
 <script src="script.js"></script>
 </html>

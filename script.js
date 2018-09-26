@@ -1,20 +1,21 @@
-
+//Start time?
 var play = 0;
-// Update the count down every 1 second
+// Start Timer on Spacebar
 document.body.onkeyup = function(e){
 	"use strict";
     if(e.keyCode === 32 && Boolean(play)===false){
-		document.getElementById("blind").innerHTML = "Start";
+		document.getElementById("blind").innerHTML = "Playing";
         play = 1;
     }
 	else if(e.keyCode === 32 && Boolean(play)===true){
 		play = 0;
-		document.getElementById("blind").innerHTML = "Stop";
+		document.getElementById("blind").innerHTML = "Paused";
 	}
 };
 var currentBlindTime = 15;
 var currentBlindSeconds = currentBlindTime * 60;
 var timePassed = 1;
+//count down every second
 var x = setInterval(function() {
 	"use strict";
 	if(Boolean(play)){
@@ -35,3 +36,20 @@ var x = setInterval(function() {
 	}
 
 }, 1000);
+
+//Switch to set up view
+
+function openTab(evt, tabName) {
+	"use strict";
+    var i, content, tablinks;
+    content = document.getElementsByClassName("content");
+    for (i = 0; i < content.length; i++) {
+		content[i].className = content[i].className.replace(" activeContent","");
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).className += " activeContent";
+    evt.currentTarget.className += " active";
+}
