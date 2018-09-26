@@ -14,7 +14,7 @@ document.body.onkeyup = function(e){
 };
 var currentBlindTime = 15;
 var currentBlindSeconds = currentBlindTime * 60;
-var timePassed = 0;
+var timePassed = 1;
 var x = setInterval(function() {
 	"use strict";
 	if(Boolean(play)){
