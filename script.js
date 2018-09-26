@@ -5,10 +5,10 @@ var play = 0;
 // Update the count down every 1 second
 document.body.onkeyup = function(e){
 	"use strict";
-    if(e.keyCode === 32 && Boolean(play)===true){
+    if(e.keyCode === 32 && Boolean(play)===false){
         play = 1;
     }
-	else if(e.keyCode === 32 && Boolean(play)===false){
+	else if(e.keyCode === 32 && Boolean(play)===true){
 		play = 0;
 	}
 };
