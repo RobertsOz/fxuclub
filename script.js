@@ -5,11 +5,14 @@ var play = 0;
 // Update the count down every 1 second
 document.body.onkeyup = function(e){
 	"use strict";
-    if(e.keyCode === 32){
+    if(e.keyCode === 32 && Boolean(play)===false){
 		document.getElementById("blind").innerHTML = "Start";
         play = 1;
     }
-
+	else if(e.keyCode === 32 && Boolean(play)===true){
+		play = 0;
+		document.getElementById("blind").innerHTML = "Stop";
+	}
 };
 var currentBlindTime = 15;
 var currentBlindSeconds = currentBlindTime * 60;
