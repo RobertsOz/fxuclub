@@ -1,6 +1,4 @@
 
-// Set the date we're counting down to
-//var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
 var play = 0;
 // Update the count down every 1 second
 document.body.onkeyup = function(e){
@@ -16,10 +14,10 @@ document.body.onkeyup = function(e){
 };
 var currentBlindTime = 15;
 var currentBlindSeconds = currentBlindTime * 60;
+var timePassed = 0;
 var x = setInterval(function() {
 	"use strict";
 	if(Boolean(play)){
-		var timePassed;
 		var time = currentBlindSeconds-timePassed;
 		var minutes = Math.floor(time/60);
 		var seconds = Math.floor(time/currentBlindTime);
@@ -31,7 +29,7 @@ var x = setInterval(function() {
         	clearInterval(x);
         	document.getElementById("demo").innerHTML = "00:00";
     	}
-		timePassed++;
+		timePassed = timePassed+1;
 	}
 
 }, 1000);
