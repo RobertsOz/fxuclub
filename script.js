@@ -21,8 +21,8 @@ var x = setInterval(function() {
 	if(Boolean(play)){
 		var timePassed;
 		var time = currentBlindSeconds-timePassed;
-		var minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-		var seconds = Math.floor((time % (1000 * 60)) / 1000);
+		var minutes = Math.floor(time/60);
+		var seconds = Math.floor(time/currentBlindTime);
 		// Output the result in an element with id="demo"
     	document.getElementById("demo").innerHTML = minutes + ":" + seconds;
     
