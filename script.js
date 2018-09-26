@@ -53,3 +53,19 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).className += " activeContent";
     evt.currentTarget.className += " active";
 }
+function openSubTab(evt, tabName) {
+	"use strict";
+    var i, subcontent, subtablinks;
+    subcontent = document.getElementsByClassName("subcontent");
+    for (i = 0; i < subcontent.length; i++) {
+		subcontent[i].className = subcontent[i].className.replace(" activeSubContent","");
+    }
+    subtablinks = document.getElementsByClassName("subtablinks");
+    for (i = 0; i < subtablinks.length; i++) {
+        subtablinks[i].className = subtablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).className += " activeSubContent";
+    evt.currentTarget.className += " active";
+}
+
+
