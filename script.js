@@ -3,17 +3,25 @@ var play = 0;
 // Start Timer on Spacebar
 var currentBlindLevel = 0;
 
-var currentBlindTime = document.getElementsByName("duration")[currentBlindLevel].value;
-var currentBlindSeconds = currentBlindTime * 60;
+
 var timePassed = 1;
+var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind;
 
-var currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel].value;
 
-var currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel].value;
+
 
 document.body.onkeyup = function(e){
+	
 	"use strict";
     if(e.keyCode === 32 && Boolean(play)===false){
+		currentBlindTime = document.getElementsByName("duration")[currentBlindLevel].value;
+		
+		currentBlindSeconds = currentBlindTime * 60;
+		
+		currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel].value;
+		
+		currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel].value;
+		
 		document.getElementById("instr").innerHTML = "Playing";
 		document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
         play = 1;
