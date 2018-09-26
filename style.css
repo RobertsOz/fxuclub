@@ -80,7 +80,22 @@
 .activeSubContent {
 	display: block;
 }
-
+ol{
+	list-style-type:none;
+	margin-left: 0;
+}
+ol > li{
+	counter-increment: customlistcounter;
+}
+ol > li:before{
+	content: counter(customlistcounter)" ";
+	font-weight: bold;
+	float:left;
+	width:3em;
+}
+ol:first-child{
+	counter-reset: customlistcounter;
+}
 ul {
 	display: inline-block;
 }
