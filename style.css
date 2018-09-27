@@ -102,4 +102,47 @@ ol:first-child{
 ul {
 	display: inline-block;
 }
-
+button.delete{
+	border:none;
+	background:none;
+	padding:0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:100%;
+	background-image:url(RemoveBlind.png);
+	width:25px;
+	height:25px;
+}
+button.delete:hover{
+	background-color:#f13453;
+	border-radius: 50%;
+}
+button.addblind{
+	border:none;
+	background:none;
+	padding:0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:100%;
+	background-image:url(AddBlinds.png);
+	width:25px;
+	height:25px;
+}
+button.addblind:hover{
+	opacity:0.5;
+}
+button.break{
+	border:none;
+	background:none;
+	padding:0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size:100%;
+	background-image:url(break.png);
+	width:25px;
+	height:25px;
+}
+button.break:hover{
+	background-color:#fde219;
+	border-radius: 50%;
+}

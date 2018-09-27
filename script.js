@@ -84,5 +84,8 @@ function openSubTab(evt, tabName) {
     document.getElementById(tabName).className += " activeSubContent";
     evt.currentTarget.className += " active";
 }
-
+function deleteTab(evt){
+	"use strict";
+	evt.currentTarget.parentNode.remove();
+}
 
