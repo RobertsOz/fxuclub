@@ -82,7 +82,7 @@
 }
 ol{
 	list-style-type:none;
-	margin-left: 0;
+	margin-left: 0px;
 }
 ol > li.level{
 	counter-increment: customlistcounter;
@@ -92,6 +92,9 @@ ol > li.level:before{
 	font-weight: bold;
 	float:left;
 	width:3em;
+}
+li.level input{
+	margin:5px;
 }
 li.break{
 	list-style-type: none;

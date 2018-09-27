@@ -115,7 +115,7 @@ function addBlind(evt){
 	li.appendChild(bigBlind);
 	var ante = createInput(0,100000,"ante","number","Ante");
 	li.appendChild(ante);
-	var minutes = createInput(0,100000,"duration","number","Minutes");
+	var minutes = createInput(0,60,"duration","number","Minutes");
 	li.appendChild(minutes);
 	var deleteBtn=createBtn("delete","deleteTab(event)");
 	li.appendChild(deleteBtn);
