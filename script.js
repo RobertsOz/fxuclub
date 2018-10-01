@@ -14,14 +14,6 @@ document.body.onkeyup = function(e){
 	
 	"use strict";
     if(e.keyCode === 32 && Boolean(play)===false){
-		currentBlindTime = document.getElementsByName("duration")[currentBlindLevel].value;
-		
-		currentBlindSeconds = currentBlindTime * 60;
-		
-		currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel].value;
-		
-		currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel].value;
-		
 		document.getElementById("instr").innerHTML = "Playing";
 		document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
         play = 1;
@@ -35,6 +27,13 @@ document.body.onkeyup = function(e){
 //count down every second
 var x = setInterval(function() {
 	"use strict";
+	//Update loop
+    currentBlindTime = document.getElementsByName("duration")[currentBlindLevel].value;
+    currentBlindSeconds = currentBlindTime * 60;
+    currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel].value;
+    currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel].value;
+    document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
+	//Play loop
 	if(Boolean(play)){
 		var time = currentBlindSeconds-timePassed;
 		var minutes = Math.floor(time/60);
@@ -49,7 +48,6 @@ var x = setInterval(function() {
         	clearInterval(x);
         	document.getElementById("demo").innerHTML = "00:00";
     	}
-		
 	}
 
 }, 1000);
