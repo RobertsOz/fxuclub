@@ -2,8 +2,8 @@
 var play = 0;
 // Start Timer on Spacebar
 var currentBlindLevel = 0;
-
-
+var blindOffset = 0;
+var onBreak = 0;
 var timePassed = 1;
 var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind;
 
@@ -13,26 +13,31 @@ var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind;
 document.body.onkeyup = function(e){
 	
 	"use strict";
-    if(e.keyCode === 32 && Boolean(play)===false){
+    if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===false){
 		document.getElementById("instr").innerHTML = "Playing";
 		document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
         play = 1;
     }
-	else if(e.keyCode === 32 && Boolean(play)===true){
+	else if(e.keyCode === 32 && Boolean(play)===true && Boolean(onBreak)===false){
 		play = 0;
 		document.getElementById("instr").innerHTML = "Paused";
 	}
+	else if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===true){
+		play = 1;
+        timePassed = 0;
+        currentBlindLevel++;
+	}
 };
-
 //count down every second
 var x = setInterval(function() {
 	"use strict";
 	//Update loop
-    currentBlindTime = document.getElementsByName("duration")[currentBlindLevel].value;
+    currentBlindTime = document.getElementsByName("duration")[currentBlindLevel-blindOffset].value;
     currentBlindSeconds = currentBlindTime * 60;
-    currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel].value;
-    currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel].value;
+    currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel-blindOffset].value;
+    currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel-blindOffset].value;
     document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
+    document.getElementById("next").innerHTML = "Next Level: "+nextBlindLevel();
 	//Play loop
 	if(Boolean(play)){
 		var time = currentBlindSeconds-timePassed;
@@ -44,16 +49,37 @@ var x = setInterval(function() {
     	document.getElementById("demo").innerHTML = formattedMinutes + ":" + formattedSeconds;
     	timePassed = timePassed+1;
     	// If the count down is over, write some text 
-    	if (time < 0) {
-        	clearInterval(x);
-        	document.getElementById("demo").innerHTML = "00:00";
+    	if (time === 0) {
+    		timePassed= 0;
+    		if(nextBlindLevel() === "Break"){
+				offset++;
+                document.getElementById("instr").innerHTML = "Press Spacebar to Resume";
+                document.getElementById("blind").innerHTML = " ";
+                document.getElementById("demo").innerHTML = "BREAK";
+				play = 0;
+				onBreak = 1;
+			}
+            currentBlindLevel++;
+        	//clearInterval(x);
+        	//document.getElementById("demo").innerHTML = "00:00";
     	}
 	}
 
 }, 1000);
+//Next Level
+function nextBlindLevel(){
+	var levelList = document.getElementById("blindList").children;
+	if(levelList[currentBlindLevel+1].className == "level"){
+		var nextChildren = levelList[currentBlindLevel+1].children;
 
+		return nextChildren[0].value + "/" + nextChildren[1].value;
+	}
+	else if(levelList[currentBlindLevel+1].className == "break"){
+		return "Break";
+	}
+	return levelList[currentBlindLevel+1];
+}
 //Switch to set up view
-
 function openTab(evt, tabName) {
 	"use strict";
     var i, content, tablinks;
