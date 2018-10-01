@@ -124,8 +124,10 @@ function addBlind(evt){
 	var breakBtn=createBtn("break","addBreak(event)");
 	li.appendChild(breakBtn);
 	var ol = document.getElementById("blindList");
-	ol.appendChild(li);
-	//evt.currentTarget.parentNode.insertBefore(li,evt.currentTarget.parentNode.nextSibling);
+	//ol.appendChild(li);
+	var clicked = evt.currentTarget.parentNode;
+	var clickedParent = evt.currentTarget.parentNode.parentNode;
+	clickedParent.insertBefore(li,clicked.nextElementSibling);
 	
 }
 

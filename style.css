@@ -7,8 +7,10 @@
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
-h3{display:block;
-width:100px;
+h3.brk{
+	display:inline-block;
+	width:420px;
+	text-align:center;
 }
 
 /* Style the buttons inside the tab */
