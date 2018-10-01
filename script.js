@@ -23,20 +23,25 @@ document.body.onkeyup = function(e){
 		document.getElementById("instr").innerHTML = "Paused";
 	}
 	else if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===true){
+        document.getElementById("instr").innerHTML = "Playing";
 		play = 1;
+		onBreak = 0;
         timePassed = 0;
         currentBlindLevel++;
+        document.getElementById("blind").innerHTML = "Blinds: "+nextBlindLevel();
 	}
 };
 //count down every second
 var x = setInterval(function() {
 	"use strict";
 	//Update loop
-    currentBlindTime = document.getElementsByName("duration")[currentBlindLevel-blindOffset].value;
-    currentBlindSeconds = currentBlindTime * 60;
-    currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel-blindOffset].value;
-    currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel-blindOffset].value;
-    document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
+    if(Boolean(onBreak)===false){
+        currentBlindTime = document.getElementsByName("duration")[currentBlindLevel-blindOffset].value;
+        currentBlindSeconds = currentBlindTime * 60;
+        currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel-blindOffset].value;
+        currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel-blindOffset].value;
+        document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
+	}
     document.getElementById("next").innerHTML = "Next Level: "+nextBlindLevel();
 	//Play loop
 	if(Boolean(play)){
@@ -49,10 +54,10 @@ var x = setInterval(function() {
     	document.getElementById("demo").innerHTML = formattedMinutes + ":" + formattedSeconds;
     	timePassed = timePassed+1;
     	// If the count down is over, write some text 
-    	if (time === 0) {
+    	if (time < 1) {
     		timePassed= 0;
     		if(nextBlindLevel() === "Break"){
-				offset++;
+				blindOffset++;
                 document.getElementById("instr").innerHTML = "Press Spacebar to Resume";
                 document.getElementById("blind").innerHTML = " ";
                 document.getElementById("demo").innerHTML = "BREAK";
