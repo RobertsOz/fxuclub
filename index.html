@@ -29,13 +29,17 @@
 	<div id="Blinds" class="subcontent activeSubContent">
 		<h1>Set up Blinds</h1>
 		<ol id="blindList">
-	 	  	<li class="level"><input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind" value="25"><input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind" value="50"><input min="0" max="100000" name="ante" type="number" placeholder="Ante"><input min="0" max="60" name="duration" type="number" placeholder="Minutes" value="20"><button class="delete" onclick="deleteTab(event)"></button><button class="addblind" onclick="addBlind(event)"></button><button class="break"></button>
+	 	  	<li class="level"><input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind" value="25"><input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind" value="50"><input min="0" max="100000" name="ante" type="number" placeholder="Ante"><input min="0" max="60" name="duration" type="number" placeholder="Minutes" value="20"><button class="delete" onclick="deleteTab(event)"></button><button class="addblind" onclick="addBlind(event,1)"></button><button class="break" onclick="addBreak(event,1)"></button>
 			</li>
-			<li class="break"><h3 class="brk">Break</h3><button class="delete" onclick="deleteTab(event)"></button><button class="addblind" onclick="addBlind(event)"></button><button class="break"></button>
+			<li class="break"><h3 class="brk">Break</h3><button class="delete" onclick="deleteTab(event)"></button><button class="addblind" onclick="addBlind(event,1)"></button><button class="break" onclick="addBreak(event,1)"></button>
 			</li>
-			<li id="parent" class="level"><input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind" value="50"><input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind" value="100"><input min="0" max="100000" name="ante" type="number" placeholder="Ante"><input min="0" max="60" name="duration" type="number" placeholder="Minutes" value="20"><button class="delete" onclick="deleteTab(event)"></button><button class="addblind" onclick="addBlind(event)"></button><button class="break"></button>
+			<li class="level"><input min="0" max="100000" name="blinds_small" type="number" placeholder="Small Blind" value="50"><input min="0" max="100000" name="blinds_big" type="number" placeholder="Big Blind" value="100"><input min="0" max="100000" name="ante" type="number" placeholder="Ante"><input min="0" max="60" name="duration" type="number" placeholder="Minutes" value="20"><button class="delete" onclick="deleteTab(event)"></button><button class="addblind" onclick="addBlind(event,1)"></button><button class="break" onclick="addBreak(event,1)"></button>
 			</li>
 		</ol>
+		<div id="addButtons">
+			<button onclick="addBlind(event,0)">Add Blind</button>
+			<button onclick="addBreak(event,0)">Add Break</button>
+		</div>
 	</div>
 	<div id="Players" class="subcontent">
 		<h1>Set up Players</h1>

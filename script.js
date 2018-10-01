@@ -105,29 +105,56 @@ function createBtn(cls,onclk){
 	btn.setAttribute("onclick",onclk);
 	return btn;
 }
-function addBlind(evt){
+function addBlind(evt,arg){
 	"use strict";
-	var li = document.createElement("LI");
-	li.className = "level";
-	var smallBlind = createInput(0,100000,"blinds_small","number","Small Blind");
-	li.appendChild(smallBlind);
-	var bigBlind = createInput(0,100000,"blinds_big","number","Big Blind");
-	li.appendChild(bigBlind);
-	var ante = createInput(0,100000,"ante","number","Ante");
-	li.appendChild(ante);
-	var minutes = createInput(0,60,"duration","number","Minutes");
-	li.appendChild(minutes);
-	var deleteBtn=createBtn("delete","deleteTab(event)");
-	li.appendChild(deleteBtn);
-	var addBtn=createBtn("addblind","addBlind(event)");
-	li.appendChild(addBtn);
-	var breakBtn=createBtn("break","addBreak(event)");
-	li.appendChild(breakBtn);
-	var ol = document.getElementById("blindList");
-	//ol.appendChild(li);
-	var clicked = evt.currentTarget.parentNode;
-	var clickedParent = evt.currentTarget.parentNode.parentNode;
-	clickedParent.insertBefore(li,clicked.nextElementSibling);
-	
+    var li = document.createElement("LI");
+    li.className = "level";
+    var smallBlind = createInput(0,100000,"blinds_small","number","Small Blind");
+    li.appendChild(smallBlind);
+    var bigBlind = createInput(0,100000,"blinds_big","number","Big Blind");
+    li.appendChild(bigBlind);
+    var ante = createInput(0,100000,"ante","number","Ante");
+    li.appendChild(ante);
+    var minutes = createInput(0,60,"duration","number","Minutes");
+    li.appendChild(minutes);
+    var deleteBtn=createBtn("delete","deleteTab(event)");
+    li.appendChild(deleteBtn);
+    var addBtn=createBtn("addblind","addBlind(event,1)");
+    li.appendChild(addBtn);
+    var breakBtn=createBtn("break","addBreak(event,1)");
+    li.appendChild(breakBtn);
+	if(arg===1){
+		var clicked = evt.currentTarget.parentNode;
+		var clickedParent = evt.currentTarget.parentNode.parentNode;
+		clickedParent.insertBefore(li,clicked.nextElementSibling);
+    }
+    else{
+    	var ol = document.getElementById("blindList");
+    	ol.appendChild(li);
+	}
+}
+function addBreak(evt,arg){
+    "use strict";
+    var li = document.createElement("LI");
+    li.className = "break";
+	var h3brk = document.createElement("H3");
+	h3brk.className = "brk";
+	h3brk.textContent = "Break";
+	li.appendChild(h3brk);
+    var deleteBtn=createBtn("delete","deleteTab(event)");
+    li.appendChild(deleteBtn);
+    var addBtn=createBtn("addblind","addBlind(event,1)");
+    li.appendChild(addBtn);
+    var breakBtn=createBtn("break","addBreak(event,1)");
+    li.appendChild(breakBtn);
+    if(arg===1){
+        var clicked = evt.currentTarget.parentNode;
+        var clickedParent = evt.currentTarget.parentNode.parentNode;
+        clickedParent.insertBefore(li,clicked.nextElementSibling);
+	}
+	else{
+        var ol = document.getElementById("blindList");
+        ol.appendChild(li);
+	}
 }
 
