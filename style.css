@@ -1,11 +1,29 @@
 @charset "utf-8";
 /* CSS Document */
+#instr{
+	text-align:center;
+}
+#blind{
+	text-align:center;
+}
+#demo{
+	text-align:center;
+	margin:0px;
+	font-size:400px;
+}
+#next{
+	text-align:center;
+	font-size:30px;
+}
 
 /* Style the tab */
+body{
+	margin:0 auto;
+}
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    //border: 1px solid #ccc;
+    //background-color: #f1f1f1;
 }
 h3.brk{
 	display:inline-block;
@@ -23,6 +41,7 @@ h3.brk{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+	width:50%;
 }
 
 /* Change background color of buttons on hover */
@@ -38,9 +57,9 @@ h3.brk{
 /* Style the tab content */
 .content {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
+    //padding: 6px 12px;
+    //border: 1px solid #ccc;
+    //border-top: none;
 }
 .activeContent {
 	display: block;
@@ -49,8 +68,8 @@ h3.brk{
 /* Style the tab */
 .subTab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    //border: 1px solid #ccc;
+    //background-color: #f1f1f1;
 }
 
 /* Style the buttons inside the tab */
@@ -63,6 +82,7 @@ h3.brk{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+	width:50%;
 }
 
 /* Change background color of buttons on hover */
@@ -78,9 +98,9 @@ h3.brk{
 /* Style the tab content */
 .subcontent {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
+    //padding: 6px 12px;
+    //border: 1px solid #ccc;
+    //border-top: none;
 }
 .activeSubContent {
 	display: block;
