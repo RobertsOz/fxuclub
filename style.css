@@ -27,8 +27,11 @@ body{
 }
 h3.brk{
 	display:inline-block;
-	width:420px;
+	width:784px;
+	font-size: 14px;
 	text-align:center;
+	margin:0;
+	line-height: 40px;
 }
 
 /* Style the buttons inside the tab */
@@ -106,23 +109,36 @@ h3.brk{
 	display: block;
 }
 ol{
+	text-align:center;
 	list-style-type:none;
-	margin-left: 0px;
+	margin: 0;
+	padding:0;
 }
 ol > li.level{
 	counter-increment: customlistcounter;
+	height:40px
+}
+#blindList li:nth-child(even){
+	background-color: #999999;
+}
+#blindList li:nth-child(odd){
+	background-color: #e2ded0;
 }
 ol > li.level:before{
 	content: counter(customlistcounter)" ";
 	font-weight: bold;
 	float:left;
 	width:3em;
+	line-height: 40px;
 }
 li.level input{
 	margin:5px;
+	padding: 5px 10px 5px 10px;
+	width: 150px;
 }
 li.break{
 	list-style-type: none;
+	height: 40px;
 }
 ol:first-child{
 	counter-reset: customlistcounter;
@@ -140,6 +156,7 @@ button.delete{
 	background-image:url(RemoveBlind.png);
 	width:25px;
 	height:25px;
+	vertical-align: middle;
 }
 button.delete:hover{
 	background-color:#f13453;
@@ -155,6 +172,8 @@ button.addblind{
 	background-image:url(AddBlinds.png);
 	width:25px;
 	height:25px;
+	vertical-align: middle;
+	margin-left:10px;
 }
 button.addblind:hover{
 	opacity:0.5;
@@ -169,8 +188,17 @@ button.break{
 	background-image:url(break.png);
 	width:25px;
 	height:25px;
+	vertical-align: middle;
+	margin-left:10px;
 }
 button.break:hover{
 	background-color:#fde219;
 	border-radius: 50%;
+}
+#addButtons{
+	text-align:center;
+	padding:10px;
+}
+#Players, #Blinds{
+	text-align:center;
 }

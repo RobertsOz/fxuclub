@@ -7,9 +7,6 @@ var onBreak = 0;
 var timePassed = 1;
 var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind;
 
-
-
-
 document.body.onkeyup = function(e){
 	
 	"use strict";
@@ -31,10 +28,12 @@ document.body.onkeyup = function(e){
         document.getElementById("blind").innerHTML = "Blinds: "+nextBlindLevel();
 	}
 };
+//document.getElementById("smtn").innerHTML = countPlayers();
 //count down every second
 var x = setInterval(function() {
 	"use strict";
 	//Update loop
+
     if(Boolean(onBreak)===false){
         currentBlindTime = document.getElementsByName("duration")[currentBlindLevel-blindOffset].value;
         currentBlindSeconds = currentBlindTime * 60;
@@ -69,6 +68,8 @@ var x = setInterval(function() {
         	//document.getElementById("demo").innerHTML = "00:00";
     	}
 	}
+
+
 
 }, 1000);
 //Next Level

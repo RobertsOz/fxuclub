@@ -44,6 +44,10 @@
 	</div>
 	<div id="Players" class="subcontent">
 		<h1>Set up Players</h1>
+		<select name="players" onchange="showPlayer(this.value)">
+			<option value="">Add Player:</option>
+		</select>
+		<h4 id="smtn"></h4>
 	</div>
 	
 </div>
@@ -62,6 +66,39 @@
         messagingSenderId: "65430001855"
     };
     firebase.initializeApp(config);
+	var playerList = [];
+    var database = firebase.database();
+    function writePlayerData(id,name){
+        firebase.database().ref("Players/"+id).set(name);
+	}
+	/*function countPlayers(){
+        var id=1;
+        var loop=1;
+        var Player = database.ref("Players/"+id);
+        while(Boolean(loop)){
+            Player.on('value', function(snapshot){
+                if(snapshot.val()>0){
+                    id++;
+				}
+				else{
+				    loop=0;
+				}
+			});
+		}
+        return id;
+	}
+	*/
+	//writePlayerData(3,"Player3");
+	//var id=3;
+    //var playz;
+	//var Playas= database.ref("Players/"+id);
+
+	//Playas.on('value', function(snapshot) {
+		//playz= snapshot.val();
+	//});
+
+	//writePlayerData(2,"User two");
+
 </script>
 <script src="script.js"></script>
 </html>
