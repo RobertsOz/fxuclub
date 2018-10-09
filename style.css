@@ -15,7 +15,18 @@
 	text-align:center;
 	font-size:30px;
 }
-
+table {
+	border-collapse:collapse;
+	width:100%;
+}
+td,th {
+	border:1px solid #000000;
+	text-align:left;
+	padding:8px;
+}
+tr:nth-child(even){
+	background-color:#dddddd;
+}
 /* Style the tab */
 body{
 	margin:0 auto;
@@ -201,4 +212,10 @@ button.break:hover{
 }
 #Players, #Blinds{
 	text-align:center;
+}
+.inputArea{
+	display:none;
+}
+.shown{
+	display:block;
 }

@@ -122,6 +122,23 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).className += " activeContent";
     evt.currentTarget.className += " active";
 }
+var shown= 0;
+function showaddField(evt,fieldName){
+	"use strict";
+	var field;
+    field = document.getElementById(fieldName);
+	if(Boolean(shown)===false){
+        field.className += " shown";
+        evt.currentTarget.innerHTML = "-";
+        shown=1;
+	}
+	else if(Boolean(shown)===true){
+		field.className = field.className.replace(" shown","");
+        evt.currentTarget.innerHTML = "+";
+		shown=0;
+	}
+
+}
 function openSubTab(evt, tabName) {
 	"use strict";
     var i, subcontent, subtablinks;
@@ -215,9 +232,43 @@ function addBreak(evt,arg){
         ol.appendChild(li);
 	}
 }
+function createTableLine(player){
+	var tr = document.createElement("TR");
+	var name = document.createElement("TD");
+	var table = document.createElement("TD");
+	var number = document.createElement("TD");
+	name.innerHTML = player;
+	tr.appendChild(name);
+	tr.appendChild(table);
+	tr.appendChild(number);
+	return tr;
+}
+function removeSelection(id){
+	var Options = document.getElementById("playerDropdown").children;
+	for(var i = 0;i<Options.length;i++){
+		var gottenValue = Options[i].value;
+		if (gottenValue === id){
+			Options[i].remove();
+		}
+	}
+}
 function usePlayer(id){
-    document.getElementById("smtn").innerHTML = playerList[id];
+    document.getElementById("playerTable").appendChild(createTableLine(playerList[id]));
+	removeSelection(id);
 }
 function writePlayerData(id,name){
     firebase.database().ref("Players/"+id).set(name);
+}
+function addToDatabase(field){
+	if(event.key === 'Enter'){
+		writePlayerData(playerList.length,field.value);
+		field.value="";
+	}
+}
+function executeInput(evt,field){
+	var inputField = document.getElementById(field);
+	if (inputField.value!== ""){
+        writePlayerData(playerList.length,inputField.value);
+        field.value="";
+	}
 }

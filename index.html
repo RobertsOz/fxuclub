@@ -47,7 +47,17 @@
 		<select id="playerDropdown" name="players" onchange="usePlayer(this.value)">
 			<option value="">Add Player:</option>
 		</select>
-		<h4 id="smtn"></h4>
+		<button onclick="showaddField(event,'addField')">+</button>
+		<div id="addField" class="inputArea">
+			<input id="inputField" placeholder="Name" onkeydown="addToDatabase(this)"><button onclick="executeInput(event,'inputField')">Add To Database</button>
+		</div>
+	<table id="playerTable">
+		<tr>
+			<th>Name</th>
+			<th>Table</th>
+			<th>Number</th>
+		</tr>
+	</table>
 	</div>
 	
 </div>
