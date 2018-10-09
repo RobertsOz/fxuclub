@@ -28,11 +28,33 @@ document.body.onkeyup = function(e){
         document.getElementById("blind").innerHTML = "Blinds: "+nextBlindLevel();
 	}
 };
-//document.getElementById("smtn").innerHTML = countPlayers();
+var playerList = [];
+var playersUsed= [{key:0,value:"empty"}];
+var database = firebase.database();
+var update = 0;
+var Player = database.ref("Players");
+Player.on('value', function(snapshot){
+    playerList= snapshot.val();
+    update=1;
+});
+
 //count down every second
 var x = setInterval(function() {
 	"use strict";
 	//Update loop
+	if(Boolean(update)){
+		var selectElmnt = document.getElementById("playerDropdown");
+        for(var i=1;i<playerList.length;i++){
+        	var tempUsed = playersUsed[i];
+        	var tempPlyr = playerList[i];
+        	if(tempUsed===undefined){
+                selectElmnt.appendChild(createOption(i,playerList[i]));
+                playersUsed.push({key: i,value: playerList[i]});
+			}
+		}
+        update=0;
+	}
+
 
     if(Boolean(onBreak)===false){
         currentBlindTime = document.getElementsByName("duration")[currentBlindLevel-blindOffset].value;
@@ -135,6 +157,12 @@ function createBtn(cls,onclk){
 	btn.setAttribute("onclick",onclk);
 	return btn;
 }
+function createOption(index,name){
+    var opt = document.createElement("OPTION");
+    opt.value = index;
+    opt.innerHTML = name;
+    return opt;
+}
 function addBlind(evt,arg){
 	"use strict";
     var li = document.createElement("LI");
@@ -187,4 +215,9 @@ function addBreak(evt,arg){
         ol.appendChild(li);
 	}
 }
-
+function usePlayer(id){
+    document.getElementById("smtn").innerHTML = playerList[id];
+}
+function writePlayerData(id,name){
+    firebase.database().ref("Players/"+id).set(name);
+}
