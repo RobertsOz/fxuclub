@@ -6,10 +6,14 @@ var blindOffset = 0;
 var onBreak = 0;
 var timePassed = 1;
 var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind;
-
+window.onkeydown = function(e) {
+    if (e.keyCode == 32 && e.target == document.body) {
+        e.preventDefault();
+    }
+};
 document.body.onkeyup = function(e){
-	
 	"use strict";
+    e.preventDefault();
     if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===false){
 		document.getElementById("instr").innerHTML = "Playing";
 		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
