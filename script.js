@@ -238,6 +238,8 @@ function createTableLine(player){
 	var table = document.createElement("TD");
 	var number = document.createElement("TD");
 	name.innerHTML = player;
+	table.className = "tableColor";
+	number.className = "tablePosition";
 	tr.appendChild(name);
 	tr.appendChild(table);
 	tr.appendChild(number);
@@ -271,4 +273,135 @@ function executeInput(evt,field){
         writePlayerData(playerList.length,inputField.value);
         field.value="";
 	}
+}
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+function generateTables(event,tableColor,tablePosition){
+	var allTableColorFields,allTablePositionFields,amount,numOfTables,table1num,table2num,table3num,table4num;
+	var Positions = [];
+	allTableColorFields = document.getElementsByClassName(tableColor);
+	allTablePositionFields = document.getElementsByClassName(tablePosition);
+	amount = allTableColorFields.length;
+	//var rand = Positions[Math.floor(Math.random()*Positions.length)];
+	if(amount <=8){
+        for(var i =1; i<=amount;i++){
+        	var table="Black";
+            Positions.push({key:i,value:table});
+        }
+		numOfTables = 1;
+		shuffle(Positions);
+		for(var i =0; i<amount;i++){
+            allTablePositionFields[i].innerHTML = Positions[i].key;
+            allTableColorFields[i].innerHTML = Positions[i].value;
+            allTablePositionFields[i].className = tablePosition;
+            allTableColorFields[i].className = tableColor;
+            allTablePositionFields[i].className += " "+Positions[i].value;
+            allTableColorFields[i].className += " "+Positions[i].value;
+		}
+	}
+	else if(amount/2<8){
+		numOfTables = 2;
+		var half = Math.ceil(amount /2);
+		table1num = half;
+		table2num = amount-half;
+        for(var i =1; i<=table1num;i++){
+            var table="Black";
+            Positions.push({key:i,value:table});
+        }
+        for(var i =1; i<=table2num;i++){
+            var table="Red";
+            Positions.push({key:i,value:table});
+        }
+        shuffle(Positions);
+        for(var i =0; i<amount;i++){
+            allTablePositionFields[i].innerHTML = Positions[i].key;
+            allTableColorFields[i].innerHTML = Positions[i].value;
+            allTablePositionFields[i].className = tablePosition;
+            allTableColorFields[i].className = tableColor;
+            allTablePositionFields[i].className += " "+Positions[i].value;
+            allTableColorFields[i].className += " "+Positions[i].value;
+        }
+	}
+	else if(amount/3<8){
+		numOfTables = 3;
+		var onethird = Math.ceil(amount/3);
+        var half = Math.ceil((amount-onethird)/2);
+		table1num=onethird;
+		table2num=half;
+		table3num=amount-onethird-half;
+        for(var i =1; i<=table1num;i++){
+            var table="Black";
+            Positions.push({key:i,value:table});
+        }
+        for(var i =1; i<=table2num;i++){
+            var table="Red";
+            Positions.push({key:i,value:table});
+        }
+        for(var i =1; i<=table3num;i++){
+            var table="Green";
+            Positions.push({key:i,value:table});
+        }
+        shuffle(Positions);
+        for(var i =0; i<amount;i++){
+            allTablePositionFields[i].innerHTML = Positions[i].key;
+            allTableColorFields[i].innerHTML = Positions[i].value;
+            allTablePositionFields[i].className = tablePosition;
+            allTableColorFields[i].className = tableColor;
+            allTablePositionFields[i].className += " "+Positions[i].value;
+            allTableColorFields[i].className += " "+Positions[i].value;
+        }
+	}
+	else if(amount/4<8){
+		numOfTables = 4;
+		var onefourth = Math.ceil(amount/4);
+        var onethird = Math.ceil((amount-onefourth)/3);
+        var half = Math.ceil((amount-onefourth-onethird)/2);
+        table1num=onefourth;
+        table2num=onethird;
+        table3num=half;
+        table4num=amount-onefourth-onethird-half;
+        for(var i =1; i<=table1num;i++){
+            var table="Black";
+            Positions.push({key:i,value:table});
+        }
+        for(var i =1; i<=table2num;i++){
+            var table="Red";
+            Positions.push({key:i,value:table});
+        }
+        for(var i =1; i<=table3num;i++){
+            var table="Green";
+            Positions.push({key:i,value:table});
+        }
+        for(var i =1; i<=table4num;i++){
+            var table="Blue";
+            Positions.push({key:i,value:table});
+        }
+        shuffle(Positions);
+        for(var i =0; i<amount;i++){
+            allTablePositionFields[i].innerHTML = Positions[i].key;
+            allTablePositionFields[i].className += Positions[i].value;
+            allTablePositionFields[i].className = tablePosition;
+            allTableColorFields[i].className = tableColor;
+            allTablePositionFields[i].className += " "+Positions[i].value;
+            allTableColorFields[i].className += " "+Positions[i].value;
+        }
+	}
+    //document.getElementById("testing").innerHTML = "Players: "+amount+" Tables: "+numOfTables+" Table1: "+table1num+" Table2: "+table2num+" Table3: "+table3num+" Table4: "+table4num;
+
 }

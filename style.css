@@ -219,3 +219,19 @@ button.break:hover{
 .shown{
 	display:block;
 }
+.Black{
+	color:#000000;
+	font-weight: bold;
+}
+.Red{
+	color:#ff0000;
+	font-weight: bold;
+}
+.Green{
+	color:#01a80c;
+	font-weight: bold;
+}
+.Blue{
+	color:#3582ff;
+	font-weight: bold;
+}
