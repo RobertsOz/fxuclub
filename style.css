@@ -2,6 +2,7 @@
 /* CSS Document */
 #instr{
 	text-align:center;
+	font-size:2vw;
 }
 #blind{
 	text-align:center;
@@ -9,26 +10,32 @@
 #demo{
 	text-align:center;
 	margin:0px;
-	font-size:400px;
+	font-size:25vw;
 }
 #next{
 	text-align:center;
-	font-size:30px;
+	font-size:3vw;
+	line-height:4.5;
 }
 table {
 	border-collapse:collapse;
 	width:100%;
 }
+th {
+	background-color:#E8DE8C;
+}
 td,th {
 	border:1px solid #000000;
 	text-align:left;
 	padding:8px;
+	font-weight: bold;
 }
 tr:nth-child(even){
-	background-color:#dddddd;
+	background-color:#E8D36D;
 }
 /* Style the tab */
 body{
+	background-color:#FFF79A;
 	margin:0 auto;
 }
 .tab {
@@ -60,12 +67,12 @@ h3.brk{
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
+    background-color: #E8DE8C;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #ccc;
+    background-color:#E8D36D;
 }
 
 /* Style the tab content */
@@ -101,12 +108,12 @@ h3.brk{
 
 /* Change background color of buttons on hover */
 .subTab button:hover {
-    background-color: #ddd;
+	background-color: #E8DE8C;
 }
 
 /* Create an active/current tablink class */
 .subTab button.active {
-    background-color: #ccc;
+	background-color:#E8D36D;
 }
 
 /* Style the tab content */
@@ -130,10 +137,10 @@ ol > li.level{
 	height:40px
 }
 #blindList li:nth-child(even){
-	background-color: #999999;
+	background-color: #FFE370;
 }
 #blindList li:nth-child(odd){
-	background-color: #e2ded0;
+	background-color: #FFF3A6;
 }
 ol > li.level:before{
 	content: counter(customlistcounter)" ";
@@ -234,4 +241,41 @@ button.break:hover{
 .Blue{
 	color:#3582ff;
 	font-weight: bold;
+}
+.column{
+	display:inline-block;
+	width:50%;
+	height:auto;
+	text-align:center;
+	vertical-align:middle;
+}
+.curBlind{
+	font-size:5vw;
+	float:left;
+}
+.nextBlind{
+	float:right;
+}
+.blindWrapper{
+	display: flex;
+}
+.setupWrapper{
+	text-align: left;
+	padding-left: 10px;
+}
+.setupWrapper button{
+	font-size: 20px;
+	font-weight: bold;
+}
+#playerDropdown {
+	padding: 10px;
+	width: 250px;
+}
+#addField{
+	padding: 10px 0px;
+}
+#inputField{
+	padding: 10px;
+	width: 225px;
+	margin-right: 4px;
 }

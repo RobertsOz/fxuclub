@@ -12,7 +12,7 @@ document.body.onkeyup = function(e){
 	"use strict";
     if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===false){
 		document.getElementById("instr").innerHTML = "Playing";
-		document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
+		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
         play = 1;
     }
 	else if(e.keyCode === 32 && Boolean(play)===true && Boolean(onBreak)===false){
@@ -61,7 +61,7 @@ var x = setInterval(function() {
         currentBlindSeconds = currentBlindTime * 60;
         currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel-blindOffset].value;
         currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel-blindOffset].value;
-        document.getElementById("blind").innerHTML = "SmallBlind: "+currentSmallBlind+ " BigBlind: "+ currentBigBlind;
+        document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
 	}
     document.getElementById("next").innerHTML = "Next Level: "+nextBlindLevel();
 	//Play loop
@@ -315,7 +315,7 @@ function generateTables(event,tableColor,tablePosition){
             allTableColorFields[i].className += " "+Positions[i].value;
 		}
 	}
-	else if(amount/2<8){
+	else if(amount/2<=8){
 		numOfTables = 2;
 		var half = Math.ceil(amount /2);
 		table1num = half;
@@ -338,7 +338,7 @@ function generateTables(event,tableColor,tablePosition){
             allTableColorFields[i].className += " "+Positions[i].value;
         }
 	}
-	else if(amount/3<8){
+	else if(amount/3<=8){
 		numOfTables = 3;
 		var onethird = Math.ceil(amount/3);
         var half = Math.ceil((amount-onethird)/2);
@@ -367,7 +367,7 @@ function generateTables(event,tableColor,tablePosition){
             allTableColorFields[i].className += " "+Positions[i].value;
         }
 	}
-	else if(amount/4<8){
+	else if(amount/4<=8){
 		numOfTables = 4;
 		var onefourth = Math.ceil(amount/4);
         var onethird = Math.ceil((amount-onefourth)/3);

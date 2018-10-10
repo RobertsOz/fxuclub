@@ -15,9 +15,15 @@
 </div>
 <div id="Timer" class="content activeContent">
 	<h1 id="instr">Press Spacebar to Start</h1>
-	<h2 id="blind"></h2>
 	<h1 id="demo">--:--</h1>
-	<h4 id="next"></h4>
+	<div class="blindWrapper">
+		<div class="curBlind column">
+			<h2 id="blind"></h2>
+		</div>
+		<div class="nextBlind column">
+			<h4 id="next"></h4>
+		</div>
+	</div>
 </div>
 
 <div id="Setup" class="content">
@@ -91,15 +97,17 @@
 	</div>
 	<div id="Players" class="subcontent">
 		<h1>Set up Players</h1>
-		<select id="playerDropdown" name="players" onchange="usePlayer(this.value)">
-			<option value="">Add Player:</option>
-		</select>
-		<button onclick="showaddField(event,'addField')">+</button>
-		<div id="addField" class="inputArea">
-			<input id="inputField" placeholder="Name" onkeydown="addToDatabase(this)"><button onclick="executeInput(event,'inputField')">Add To Database</button>
+		<div class="setupWrapper">
+			<select id="playerDropdown" name="players" onchange="usePlayer(this.value)">
+				<option value="">Add Player:</option>
+			</select>
+			<button onclick="showaddField(event,'addField')">+</button>
+			<div id="addField" class="inputArea">
+				<input id="inputField" placeholder="Name" onkeydown="addToDatabase(this)"><button onclick="executeInput(event,'inputField')">Add To Database</button>
+			</div>
+			<button onclick="generateTables(event,'tableColor','tablePosition')">Assign Tables</button>
+			<h4 id="testing"></h4>
 		</div>
-		<button onclick="generateTables(event,'tableColor','tablePosition')">Assign Tables</button>
-		<h4 id="testing"></h4>
 	<table id="playerTable">
 		<tr>
 			<th>Name</th>
