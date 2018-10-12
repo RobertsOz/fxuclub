@@ -280,3 +280,6 @@ button.break:hover{
 	width: 225px;
 	margin-right: 4px;
 }
+option{
+	font-size:17px;
+}
