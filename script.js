@@ -11,19 +11,27 @@ window.onkeydown = function(e) {
         e.preventDefault();
     }
 };
+var selection = document.getElementById("playerDropdown");
+selection.onkeydown = function(e){
+    if(e.keyCode === 39 || e.keyCode === 40) { //up or down
+        e.preventDefault();
+        //return false;
+    }
+};
 document.body.onkeyup = function(e){
 	"use strict";
     e.preventDefault();
-    if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===false){
+    var TimerArea = document.getElementById("Timer").className;
+    if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===false && TimerArea==="content activeContent"){
 		document.getElementById("instr").innerHTML = "Playing";
 		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
         play = 1;
     }
-	else if(e.keyCode === 32 && Boolean(play)===true && Boolean(onBreak)===false){
+	else if(e.keyCode === 32 && Boolean(play)===true && Boolean(onBreak)===false && TimerArea==="content activeContent"){
 		play = 0;
 		document.getElementById("instr").innerHTML = "Paused";
 	}
-	else if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===true){
+	else if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===true && TimerArea==="content activeContent"){
         document.getElementById("instr").innerHTML = "Playing";
 		play = 1;
 		onBreak = 0;
@@ -275,7 +283,7 @@ function executeInput(evt,field){
 	var inputField = document.getElementById(field);
 	if (inputField.value!== ""){
         writePlayerData(playerList.length,inputField.value);
-        field.value="";
+        inputField.value="";
 	}
 }
 function shuffle(array) {
@@ -329,7 +337,7 @@ function generateTables(event,tableColor,tablePosition){
             Positions.push({key:i,value:table});
         }
         for(var i =1; i<=table2num;i++){
-            var table="Red";
+            var table="Blue";
             Positions.push({key:i,value:table});
         }
         shuffle(Positions);
@@ -354,7 +362,7 @@ function generateTables(event,tableColor,tablePosition){
             Positions.push({key:i,value:table});
         }
         for(var i =1; i<=table2num;i++){
-            var table="Red";
+            var table="Blue";
             Positions.push({key:i,value:table});
         }
         for(var i =1; i<=table3num;i++){
@@ -385,7 +393,7 @@ function generateTables(event,tableColor,tablePosition){
             Positions.push({key:i,value:table});
         }
         for(var i =1; i<=table2num;i++){
-            var table="Red";
+            var table="Blue";
             Positions.push({key:i,value:table});
         }
         for(var i =1; i<=table3num;i++){
@@ -393,13 +401,13 @@ function generateTables(event,tableColor,tablePosition){
             Positions.push({key:i,value:table});
         }
         for(var i =1; i<=table4num;i++){
-            var table="Blue";
+            var table="Red";
             Positions.push({key:i,value:table});
         }
         shuffle(Positions);
         for(var i =0; i<amount;i++){
             allTablePositionFields[i].innerHTML = Positions[i].key;
-            allTablePositionFields[i].className += Positions[i].value;
+            allTableColorFields[i].innerHTML = Positions[i].value;
             allTablePositionFields[i].className = tablePosition;
             allTableColorFields[i].className = tableColor;
             allTablePositionFields[i].className += " "+Positions[i].value;
