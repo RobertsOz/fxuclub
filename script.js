@@ -59,7 +59,7 @@ var x = setInterval(function() {
         for(var i=1;i<playerList.length;i++){
         	var tempUsed = playersUsed[i];
         	var tempPlyr = playerList[i];
-        	if(tempUsed===undefined){
+        	if(tempUsed===undefined && tempPlyr != undefined ){
                 selectElmnt.appendChild(createOption(i,playerList[i]));
                 playersUsed.push({key: i,value: playerList[i]});
 			}
