@@ -1,5 +1,6 @@
 //Start time?
 var play = 0;
+var first= 0;
 // Start Timer on Spacebar
 var currentBlindLevel = 0;
 var blindOffset = 0;
@@ -23,6 +24,10 @@ document.body.onkeyup = function(e){
     e.preventDefault();
     var TimerArea = document.getElementById("Timer").className;
     if(e.keyCode === 32 && Boolean(play)===false && Boolean(onBreak)===false && TimerArea==="content activeContent"){
+        if(Boolean(first)===false){
+            rounders.play();
+            first=1;
+        }
 		document.getElementById("instr").innerHTML = "Playing";
 		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
         play = 1;
@@ -41,6 +46,8 @@ document.body.onkeyup = function(e){
 	}
 };
 var audio = new Audio('sound.mp3');
+var rounders = new Audio('rounders.mp3');
+
 var playerList = [];
 var playersUsed= [{key:0,value:"empty"}];
 var database = firebase.database();
