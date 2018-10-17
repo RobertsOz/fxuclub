@@ -40,10 +40,12 @@ document.body.onkeyup = function(e){
         document.getElementById("blind").innerHTML = "Blinds: "+nextBlindLevel();
 	}
 };
+var audio = new Audio('sound.mp3');
 var playerList = [];
 var playersUsed= [{key:0,value:"empty"}];
 var database = firebase.database();
 var update = 0;
+var red = 0;
 var Player = database.ref("Players");
 Player.on('value', function(snapshot){
     playerList= snapshot.val();
@@ -86,7 +88,18 @@ var x = setInterval(function() {
 		// Output the result in an element with id="demo"
     	document.getElementById("demo").innerHTML = formattedMinutes + ":" + formattedSeconds;
     	timePassed = timePassed+1;
-    	// If the count down is over, write some text 
+    	// If the count down is over, write some text
+        if(time<10){
+            if (Boolean(red)===false){
+                document.getElementById("demo").className = "Red";
+                red = 1;
+            }
+            audio.play();
+        }
+        else if(Boolean(red)){
+            document.getElementById("demo").className = "";
+            red = 0;
+        }
     	if (time < 1) {
     		timePassed= 0;
     		if(nextBlindLevel() === "Break"){
