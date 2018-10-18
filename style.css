@@ -104,7 +104,7 @@ h3.brk{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
-	width:50%;
+	width:33.33%;
 }
 
 /* Change background color of buttons on hover */
@@ -223,6 +223,34 @@ button.break:hover{
 }
 .inputArea{
 	display:none;
+}
+#Places{
+	font-weight: bold;
+	font-size:2vw;
+}
+#PlacesList{
+	text-align: left;
+	padding: 25px;
+	list-style-type: decimal;
+}
+#PlacesList li{
+	font-size: 17px;
+	font-weight: bold;
+	margin-bottom:5px;
+}
+#PlacesList li input{
+	padding: 7px;
+	font-size: 20px;
+}
+#payoutDropdown{
+	padding:10px;
+	margin:10px;
+}
+.placesWrapper{
+	position:absolute;
+	width:200px;
+	right:0;
+	top:13vw;
 }
 .shown{
 	display:block;

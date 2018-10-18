@@ -14,6 +14,11 @@
   <button class="tablinks" onclick="openTab(event, 'Setup')">Set Up</button>
 </div>
 <div id="Timer" class="content activeContent">
+	<div class="placesWrapper">
+		<ol id="Places">
+
+		</ol>
+	</div>
 	<h1 id="instr">Press Spacebar to Start</h1>
 	<h1 id="demo">--:--</h1>
 	<div class="blindWrapper">
@@ -31,6 +36,7 @@
 	<div class="subTab">
   		<button class="subtablinks active" onclick="openSubTab(event,'Blinds')">Blinds</button>
   		<button class="subtablinks" onclick="openSubTab(event, 'Players')">Players</button>
+		<button class="subtablinks" onclick="openSubTab(event,'Payout')">Pay out</button>
 	</div>
 	
 	<div id="Blinds" class="subcontent activeSubContent">
@@ -111,7 +117,25 @@
 		</tr>
 	</table>
 	</div>
-	
+	<div id="Payout" class="subcontent">
+		<select id="payoutDropdown" name="amountofpaid" onchange="createPlayersPaid(this.value)">
+			<option value="">Players Paid:</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+		</select>
+		<div class="payoutWrapper">
+			<ol id="PlacesList">
+
+			</ol>
+		</div>
+	</div>
 </div>
 	
 </body>

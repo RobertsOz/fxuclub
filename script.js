@@ -307,6 +307,45 @@ function usePlayer(id){
     document.getElementById("playerTable").appendChild(createTableLine(playerList[id]));
 	removeSelection(id);
 }
+function createPlayersPaid(amount){
+    var i;
+    var payoutList = document.getElementById("PlacesList");
+    while (payoutList.firstChild) {
+        payoutList.removeChild(payoutList.firstChild);
+    }
+    var PlacesList = document.getElementById("Places");
+    while (PlacesList.firstChild) {
+        PlacesList.removeChild(PlacesList.firstChild);
+    }
+    for(i=0; i<amount;i++){
+        var li = document.createElement("li");
+        var input = createInput(1,1000,i,"number","Amount");
+        input.setAttribute("onchange","updatePaid(this.name,this.value)");
+        li.appendChild(input);
+        payoutList.appendChild(li);
+        var li2 = document.createElement("li");
+        var add;
+        if(i===0){
+            add="st";
+        }
+        else if(i===1){
+            add="nd";
+        }
+        else if(i===2){
+            add="rd";
+        }
+        else{
+            add="th";
+        }
+        li2.innerHTML=i+1+add;
+        PlacesList.appendChild(li2);
+    }
+}
+function updatePaid(id,value){
+    var place = document.getElementById("Places").childNodes[id];
+    place.innerHTML= place.innerHTML.slice(0,3);
+    place.innerHTML+=": "+value+"£";
+}
 function writePlayerData(id,name){
     firebase.database().ref("Players/"+id).set(name);
 }
