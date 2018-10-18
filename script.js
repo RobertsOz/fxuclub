@@ -270,7 +270,7 @@ function createTableLine(player){
 	var table = document.createElement("TD");
 	var number = document.createElement("TD");
 	var remove = document.createElement("TD");
-    var btn = createBtn("tableBtn","removeTableAndAddOption(event)");
+    var btn = createBtn("tableBtn","removeTableAndAddOption(event,'"+player+"')");
     btn.innerHTML= "Remove";
     remove.appendChild(btn);
 	name.innerHTML = player;
@@ -282,8 +282,12 @@ function createTableLine(player){
 	tr.appendChild(remove);
 	return tr;
 }
-function removeTableAndAddOption(evt){
+function removeTableAndAddOption(evt,name){
     "use strict";
+    //var name= evt.currentTarget.parentNode.parentNode.childNodes[0].innerHTML;
+    var index = playersUsed[name];
+    createOption(index,name);
+    //update=0;
     evt.currentTarget.parentNode.parentNode.remove();
 }
 function removeSelection(id){
