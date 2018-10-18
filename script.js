@@ -96,7 +96,7 @@ var x = setInterval(function() {
     	document.getElementById("demo").innerHTML = formattedMinutes + ":" + formattedSeconds;
     	timePassed = timePassed+1;
     	// If the count down is over, write some text
-        if(time<10){
+        if(time<6){
             if (Boolean(red)===false){
                 document.getElementById("demo").className = "Red";
                 red = 1;
@@ -284,10 +284,14 @@ function createTableLine(player){
 }
 function removeTableAndAddOption(evt,name){
     "use strict";
-    //var name= evt.currentTarget.parentNode.parentNode.childNodes[0].innerHTML;
-    var index = playersUsed[name];
-    createOption(index,name);
-    //update=0;
+    var index;
+    for(var i in playersUsed){
+        if (playersUsed[i].value===name){
+            index=playersUsed[i].key;
+        }
+    }
+    var selectElmnt = document.getElementById("playerDropdown");
+    selectElmnt.appendChild(createOption(index,name));
     evt.currentTarget.parentNode.parentNode.remove();
 }
 function removeSelection(id){
