@@ -269,13 +269,22 @@ function createTableLine(player){
 	var name = document.createElement("TD");
 	var table = document.createElement("TD");
 	var number = document.createElement("TD");
+	var remove = document.createElement("TD");
+    var btn = createBtn("tableBtn","removeTableAndAddOption(event)");
+    btn.innerHTML= "Remove";
+    remove.appendChild(btn);
 	name.innerHTML = player;
 	table.className = "tableColor";
 	number.className = "tablePosition";
 	tr.appendChild(name);
 	tr.appendChild(table);
 	tr.appendChild(number);
+	tr.appendChild(remove);
 	return tr;
+}
+function removeTableAndAddOption(evt){
+    "use strict";
+    evt.currentTarget.parentNode.parentNode.remove();
 }
 function removeSelection(id){
 	var Options = document.getElementById("playerDropdown").children;
