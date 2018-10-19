@@ -47,7 +47,7 @@ document.body.onkeyup = function(e){
 };
 var audio = new Audio('sound.mp3');
 var rounders = new Audio('rounders.mp3');
-
+var missingIDs = [];
 var playerList = [];
 var playersUsed= [{key:0,value:"empty"}];
 var database = firebase.database();
@@ -68,10 +68,18 @@ var x = setInterval(function() {
         for(var i=1;i<playerList.length;i++){
         	var tempUsed = playersUsed[i];
         	var tempPlyr = playerList[i];
-        	if(tempUsed===undefined && tempPlyr != undefined ){
+        	if(tempUsed===undefined && tempPlyr != undefined && missingIDs[0]!==i){
                 selectElmnt.appendChild(createOption(i,playerList[i]));
                 playersUsed.push({key: i,value: playerList[i]});
 			}
+			else if(tempPlyr === undefined){
+			    missingIDs.push(i);
+            }
+            else if(missingIDs.length>0 && missingIDs[0]=== i){
+                selectElmnt.appendChild(createOption(i,playerList[i]));
+                playersUsed.push({key: i,value: playerList[i]});
+                missingIDs.shift();
+            }
 		}
         update=0;
 	}
@@ -351,16 +359,26 @@ function writePlayerData(id,name){
 }
 function addToDatabase(field){
 	if(event.key === 'Enter'){
-		writePlayerData(playerList.length,field.value);
+	    if(field.value !=="" && missingIDs.length>0){
+            writePlayerData(missingIDs[0],field.value);
+            //missingIDs.shift();
+        }
+        else if(field.value !=="") {
+            writePlayerData(playerList.length,field.value);
+        }
 		field.value="";
 	}
 }
 function executeInput(evt,field){
 	var inputField = document.getElementById(field);
-	if (inputField.value!== ""){
-        writePlayerData(playerList.length,inputField.value);
-        inputField.value="";
+	if (inputField.value!== "" && missingIDs.length>0){
+        writePlayerData(missingIDs[0],inputField.value);
+        //missingIDs.shift();
 	}
+	else if(inputField.value!== ""){
+        writePlayerData(playerList.length,inputField.value);
+    }
+    inputField.value="";
 }
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
