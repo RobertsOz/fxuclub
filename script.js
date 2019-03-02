@@ -6,7 +6,7 @@ var currentBlindLevel = 0;
 var blindOffset = 0;
 var onBreak = 0;
 var timePassed = 1;
-var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind;
+var currentBlindTime, currentBlindSeconds, currentSmallBlind, currentBigBlind, currentAnte;
 window.onkeydown = function(e) {
     if (e.keyCode == 32 && e.target == document.body) {
         e.preventDefault();
@@ -29,7 +29,7 @@ document.body.onkeyup = function(e){
             first=1;
         }
 		document.getElementById("instr").innerHTML = "Playing";
-		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
+		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind + ", " + currentAnte;
         play = 1;
     }
 	else if(e.keyCode === 32 && Boolean(play)===true && Boolean(onBreak)===false && TimerArea==="content activeContent"){
@@ -90,7 +90,8 @@ var x = setInterval(function() {
         currentBlindSeconds = currentBlindTime * 60;
         currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel-blindOffset].value;
         currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel-blindOffset].value;
-        document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind;
+	currentAnte = document.getElementsByName("ante")[currentBlindLevel-blindOffset].value;
+        document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind + ", " + currentAnte;
 	}
     document.getElementById("next").innerHTML = "Next Level: "+nextBlindLevel();
 	//Play loop
