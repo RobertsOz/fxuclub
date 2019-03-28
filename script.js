@@ -29,7 +29,7 @@ document.body.onkeyup = function(e){
             first=1;
         }
 		document.getElementById("instr").innerHTML = "Playing";
-		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind + ", " + currentAnte;
+		document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind + ((currentAnte > 0) ? ", " + currentAnte : " ");
         play = 1;
     }
 	else if(e.keyCode === 32 && Boolean(play)===true && Boolean(onBreak)===false && TimerArea==="content activeContent"){
