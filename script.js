@@ -91,7 +91,7 @@ var x = setInterval(function() {
         currentSmallBlind = document.getElementsByName("blinds_small")[currentBlindLevel-blindOffset].value;
         currentBigBlind = document.getElementsByName("blinds_big")[currentBlindLevel-blindOffset].value;
 	currentAnte = document.getElementsByName("ante")[currentBlindLevel-blindOffset].value;
-        document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind + ", " + currentAnte;
+        document.getElementById("blind").innerHTML = currentSmallBlind+ " / "+ currentBigBlind + ((currentAnte > 0) ? ", " + currentAnte : " ");
 	}
     document.getElementById("next").innerHTML = "Next Level: "+nextBlindLevel();
 	//Play loop
