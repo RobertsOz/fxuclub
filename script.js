@@ -141,7 +141,7 @@ function nextBlindLevel(){
 	if(levelList[currentBlindLevel+1].className == "level"){
 		var nextChildren = levelList[currentBlindLevel+1].children;
 
-		return nextChildren[0].value + "/" + nextChildren[1].value;
+		return nextChildren[0].value + "/" + nextChildren[1].value + ((nextChildren[2].value > 0) ? ", " + nextChildren[2].value : " ");
 	}
 	else if(levelList[currentBlindLevel+1].className == "break"){
 		return "Break";
